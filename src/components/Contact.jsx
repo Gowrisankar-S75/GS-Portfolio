@@ -26,10 +26,10 @@ export function Contact() {
           <motion.a
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            href="mailto:hello@gowrisankar.dev"
+            href="mailto:gowrisankar.sa75@gmail.com"
             className="group flex items-center justify-between px-10 py-5 bg-[var(--accent-color)] text-white rounded-full font-bold tracking-widest uppercase hover:bg-white hover:text-[var(--dark-contrast)] transition-colors duration-300 shadow-xl shadow-[var(--accent-color)]/20"
           >
-            <span>hello@gowrisankar.dev</span>
+            <span>gowrisankar.sa75@gmail.com</span>
             <span className="ml-6 p-2 border border-current rounded-full group-hover:bg-[var(--dark-contrast)] group-hover:text-white group-hover:border-transparent transition-colors duration-300">
               <ArrowUpRight size={24} className="transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
             </span>
@@ -49,7 +49,7 @@ export function Contact() {
             <h4 className="text-sm font-bold uppercase tracking-widest text-white/40 mb-6">Socials</h4>
             <ul className="space-y-4">
               <li>
-                <a href="#" className="group flex items-center gap-3 text-white/80 hover:text-[var(--accent-color)] transition-colors font-medium">
+                <a href="https://github.com/Gowrisankar-S75" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-3 text-white/80 hover:text-[var(--accent-color)] transition-colors font-medium">
                   <span className="p-1.5 border border-white/20 rounded-full group-hover:border-[var(--accent-color)] transition-colors">
                     <ArrowUpRight size={14} />
                   </span>
@@ -57,7 +57,7 @@ export function Contact() {
                 </a>
               </li>
               <li>
-                <a href="#" className="group flex items-center gap-3 text-white/80 hover:text-[var(--accent-color)] transition-colors font-medium">
+                <a href="https://www.linkedin.com/in/gowrisankar-s-378bb8266" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-3 text-white/80 hover:text-[var(--accent-color)] transition-colors font-medium">
                   <span className="p-1.5 border border-white/20 rounded-full group-hover:border-[var(--accent-color)] transition-colors">
                     <ArrowUpRight size={14} />
                   </span>
@@ -65,11 +65,11 @@ export function Contact() {
                 </a>
               </li>
               <li>
-                <a href="#" className="group flex items-center gap-3 text-white/80 hover:text-[var(--accent-color)] transition-colors font-medium">
+                <a href="tel:+919962431677" className="group flex items-center gap-3 text-white/80 hover:text-[var(--accent-color)] transition-colors font-medium">
                   <span className="p-1.5 border border-white/20 rounded-full group-hover:border-[var(--accent-color)] transition-colors">
                     <ArrowUpRight size={14} />
                   </span>
-                  Twitter
+                  9962431677
                 </a>
               </li>
             </ul>

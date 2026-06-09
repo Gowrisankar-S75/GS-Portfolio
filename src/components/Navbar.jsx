@@ -5,6 +5,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 import profileImg from '../assets/17616.jpg';
 
+import { CinematicProfileReveal } from './CinematicProfileReveal';
+
 export function Navbar() {
   const { theme, toggleTheme } = useTheme();
   const [isOpen, setIsOpen] = useState(false);
@@ -102,37 +104,10 @@ export function Navbar() {
       </AnimatePresence>
     </nav>
 
-    {/* Picture Modal */}
+    {/* Cinematic Profile Modal */}
     <AnimatePresence>
       {isPictureOpen && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-md p-4"
-          onClick={() => setIsPictureOpen(false)}
-        >
-          <motion.div
-            initial={{ scale: 0.9, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0.9, opacity: 0 }}
-            className="relative max-w-2xl w-full max-h-[90vh] flex flex-col items-center justify-center"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button 
-              onClick={() => setIsPictureOpen(false)}
-              className="absolute -top-12 right-0 text-white/70 hover:text-white transition-colors p-2"
-              aria-label="Close"
-            >
-              <X size={32} />
-            </button>
-            <img 
-              src={profileImg} 
-              alt="Gowrisankar Full Profile" 
-              className="w-auto h-auto max-w-full max-h-[85vh] object-contain rounded-2xl shadow-2xl border border-white/10" 
-            />
-          </motion.div>
-        </motion.div>
+        <CinematicProfileReveal onClose={() => setIsPictureOpen(false)} />
       )}
     </AnimatePresence>
     </>

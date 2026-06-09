@@ -15,7 +15,7 @@ export function Github() {
 
   useEffect(() => {
     // In a real app, replace 'octocat' with your actual github username
-    fetch('https://api.github.com/users/octocat/repos?sort=updated&per_page=6')
+    fetch('https://api.github.com/users/Gowrisankar-S75/repos?sort=updated&per_page=6')
       .then(res => res.json())
       .then(data => {
         if (Array.isArray(data)) {
