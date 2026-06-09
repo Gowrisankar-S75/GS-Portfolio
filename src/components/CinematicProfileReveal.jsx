@@ -20,8 +20,8 @@ export function CinematicProfileReveal({ onClose }) {
   const canvasState = useRef({
     showTypography: false,
     showTrails: false,
-    imageX: -1000,
-    imageY: window.innerHeight / 2,
+    imageX: window.innerWidth / 2,
+    imageY: -1000,
     shards: [],
     typographyOffset: 0,
     particles: []
@@ -70,7 +70,7 @@ export function CinematicProfileReveal({ onClose }) {
       if (state.showTrails) {
         ctx.beginPath();
         ctx.moveTo(state.imageX, state.imageY);
-        ctx.lineTo(state.imageX - 600, state.imageY);
+        ctx.lineTo(state.imageX, state.imageY - 600);
         ctx.strokeStyle = 'rgba(255, 87, 34, 0.5)'; // Accent color trail
         ctx.lineWidth = 8;
         ctx.shadowBlur = 20;
@@ -78,15 +78,15 @@ export function CinematicProfileReveal({ onClose }) {
         ctx.stroke();
         
         ctx.beginPath();
-        ctx.moveTo(state.imageX, state.imageY - 30);
-        ctx.lineTo(state.imageX - 400, state.imageY - 30);
+        ctx.moveTo(state.imageX - 30, state.imageY);
+        ctx.lineTo(state.imageX - 30, state.imageY - 400);
         ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
         ctx.lineWidth = 3;
         ctx.stroke();
         
         ctx.beginPath();
-        ctx.moveTo(state.imageX, state.imageY + 30);
-        ctx.lineTo(state.imageX - 400, state.imageY + 30);
+        ctx.moveTo(state.imageX + 30, state.imageY);
+        ctx.lineTo(state.imageX + 30, state.imageY - 400);
         ctx.stroke();
       }
 
@@ -166,8 +166,8 @@ export function CinematicProfileReveal({ onClose }) {
     // Animate the actual DOM image AND the canvas tracking state
     const isMobile = window.innerWidth < 768;
     tl.fromTo(imageRef.current,
-      { x: '-80vw', rotation: -1440, scale: 0.2, opacity: 0 },
-      { x: '0vw', rotation: 0, scale: 1, opacity: 1, duration: 0.8, ease: "power4.in",
+      { y: '-80vh', rotation: -1440, scale: 0.2, opacity: 0 },
+      { y: '0vh', rotation: 0, scale: 1, opacity: 1, duration: 0.8, ease: "power4.in",
         onUpdate: function() {
           // Sync canvas tracking for trails
           if (imageRef.current) {

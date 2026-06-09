@@ -89,11 +89,11 @@ export function Hero() {
             {/* Quick Stats or Tags */}
             <motion.div variants={itemVariants} className="mt-16 flex gap-8">
               <div>
-                <p className="text-4xl font-display text-[var(--accent-color)]">5+</p>
+                <p className="text-4xl font-display text-[var(--accent-color)]">1+</p>
                 <p className="text-sm tracking-widest uppercase text-[var(--text-secondary)] font-bold mt-1">Years Exp</p>
               </div>
               <div>
-                <p className="text-4xl font-display text-[var(--accent-color)]">50+</p>
+                <p className="text-4xl font-display text-[var(--accent-color)]">10+</p>
                 <p className="text-sm tracking-widest uppercase text-[var(--text-secondary)] font-bold mt-1">Projects</p>
               </div>
             </motion.div>
