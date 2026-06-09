@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <meta name="description" content="Personal portfolio website">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="#" class="logo">Portfolio</a>
+            <ul class="nav-links">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><button id="theme-toggle" class="theme-btn" aria-label="Toggle Theme">☀️</button></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <p class="greeting">Hi, my name is</p>
+                <h1 class="headline">Alex Dev.</h1>
+                <p class="description">A software developer building exceptional digital experiences.</p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary">View Portfolio</a>
+                    <a href="#contact" class="btn btn-secondary">Contact Me</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about section-padding">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-container">
+                <div class="about-image">
+                    <div class="image-placeholder">
+                        <div class="glow-effect"></div>
+                    </div>
+                </div>
+                <div class="about-content">
+                    <p class="bio">
+                        I'm a passionate software developer with a strong focus on creating intuitive, user-friendly, and high-performance digital experiences. I specialize in building robust full-stack applications from the ground up, combining clean code with modern design principles to deliver exceptional products.
+                    </p>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <h3 class="stat-number">5+</h3>
+                            <p class="stat-label">Years of Experience</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3 class="stat-number">40+</h3>
+                            <p class="stat-label">Projects Completed</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3 class="stat-number">20+</h3>
+                            <p class="stat-label">Clients Worked With</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="skills section-padding">
+            <h2 class="section-title">My Skills</h2>
+            <div class="skills-container">
+                
+                <!-- Category 1 -->
+                <div class="skill-category">
+                    <h3 class="category-title">Frontend Development</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <div class="skill-icon">{'<'} / {'>'}</div>
+                            <span class="skill-name">HTML/CSS</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">JS</div>
+                            <span class="skill-name">JavaScript</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">Re</div>
+                            <span class="skill-name">React</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">TW</div>
+                            <span class="skill-name">Tailwind</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category 2 -->
+                <div class="skill-category">
+                    <h3 class="category-title">Backend & Database</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <div class="skill-icon">Nd</div>
+                            <span class="skill-name">Node.js</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">Py</div>
+                            <span class="skill-name">Python</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">SQL</div>
+                            <span class="skill-name">PostgreSQL</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">Mg</div>
+                            <span class="skill-name">MongoDB</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category 3 -->
+                <div class="skill-category">
+                    <h3 class="category-title">Tools & Others</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <div class="skill-icon">Git</div>
+                            <span class="skill-name">Git & GitHub</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">Fg</div>
+                            <span class="skill-name">Figma</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">Dk</div>
+                            <span class="skill-name">Docker</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">AWS</div>
+                            <span class="skill-name">AWS</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="projects section-padding">
+            <h2 class="section-title">My Projects</h2>
+            
+            <div class="filter-container">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="web">Web</button>
+                <button class="filter-btn" data-filter="app">App</button>
+                <button class="filter-btn" data-filter="design">Design</button>
+            </div>
+
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card" data-category="web">
+                    <div class="project-img-placeholder">
+                        <span class="img-text">Web Project</span>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">E-Commerce Platform</h3>
+                        <p class="project-desc">A full-stack e-commerce solution with payment integration and a modern dashboard.</p>
+                        <a href="#" class="btn btn-primary btn-small">View Project</a>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card" data-category="app">
+                    <div class="project-img-placeholder">
+                        <span class="img-text">App Project</span>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">Fitness Tracker App</h3>
+                        <p class="project-desc">A cross-platform mobile application to track daily workouts and nutrition.</p>
+                        <a href="#" class="btn btn-primary btn-small">View Project</a>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card" data-category="design">
+                    <div class="project-img-placeholder">
+                        <span class="img-text">Design Project</span>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">Brand Identity Design</h3>
+                        <p class="project-desc">Complete branding and UI/UX design for a tech startup in the AI space.</p>
+                        <a href="#" class="btn btn-primary btn-small">View Project</a>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-card" data-category="web">
+                    <div class="project-img-placeholder">
+                        <span class="img-text">Web Project</span>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">Real Estate Portal</h3>
+                        <p class="project-desc">A property listing website with advanced search filters and interactive maps.</p>
+                        <a href="#" class="btn btn-primary btn-small">View Project</a>
+                    </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="project-card" data-category="app">
+                    <div class="project-img-placeholder">
+                        <span class="img-text">App Project</span>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">Finance Manager</h3>
+                        <p class="project-desc">A personal finance mobile app featuring expense tracking and budget goals.</p>
+                        <a href="#" class="btn btn-primary btn-small">View Project</a>
+                    </div>
+                </div>
+
+                <!-- Project 6 -->
+                <div class="project-card" data-category="web">
+                    <div class="project-img-placeholder">
+                        <span class="img-text">Web Project</span>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">Social Media Dashboard</h3>
+                        <p class="project-desc">An analytics dashboard for social media managers with real-time data visualization.</p>
+                        <a href="#" class="btn btn-primary btn-small">View Project</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="testimonials section-padding">
+            <h2 class="section-title">Testimonials</h2>
+            <div class="testimonials-grid">
+                
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card">
+                    <div class="quote-icon">"</div>
+                    <p class="testimonial-text">"Alex is a phenomenal developer who consistently delivers high-quality work. His attention to detail and ability to understand complex requirements made our project a huge success."</p>
+                    <div class="testimonial-author">
+                        <div class="author-photo">
+                            <span class="photo-placeholder">S</span>
+                        </div>
+                        <div class="author-info">
+                            <h4 class="author-name">Sarah Jenkins</h4>
+                            <p class="author-role">Product Manager at TechCorp</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card">
+                    <div class="quote-icon">"</div>
+                    <p class="testimonial-text">"Working with Alex was a seamless experience. He completely revamped our frontend architecture and dramatically improved the overall performance of our application."</p>
+                    <div class="testimonial-author">
+                        <div class="author-photo">
+                            <span class="photo-placeholder">M</span>
+                        </div>
+                        <div class="author-info">
+                            <h4 class="author-name">Michael Chang</h4>
+                            <p class="author-role">CTO at StartupX</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card">
+                    <div class="quote-icon">"</div>
+                    <p class="testimonial-text">"An absolute professional. He brought our design vision to life perfectly while ensuring the code was clean and maintainable. I highly recommend him for any web project."</p>
+                    <div class="testimonial-author">
+                        <div class="author-photo">
+                            <span class="photo-placeholder">E</span>
+                        </div>
+                        <div class="author-info">
+                            <h4 class="author-name">Elena Rodriguez</h4>
+                            <p class="author-role">Lead Designer at CreativeStudio</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact section-padding">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-container">
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="john@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" placeholder="Your message here..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary submit-btn">Send Message</button>
+                </form>
+
+                <div class="social-links">
+                    <a href="#" class="social-icon" aria-label="LinkedIn">in</a>
+                    <a href="#" class="social-icon" aria-label="GitHub">gh</a>
+                    <a href="#" class="social-icon" aria-label="Twitter">tw</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 Personal Portfolio. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Theme Toggle Logic
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        
+        // Check local storage for theme
+        const currentTheme = localStorage.getItem('theme');
+        if (currentTheme === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+            themeToggleBtn.innerHTML = '🌙';
+        }
+
+        themeToggleBtn.addEventListener('click', () => {
+            if (document.documentElement.hasAttribute('data-theme')) {
+                document.documentElement.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'dark');
+                themeToggleBtn.innerHTML = '☀️';
+            } else {
+                document.documentElement.setAttribute('data-theme', 'light');
+                localStorage.setItem('theme', 'light');
+                themeToggleBtn.innerHTML = '🌙';
+            }
+        });
+
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filterValue = btn.getAttribute('data-filter');
+
+                projectCards.forEach(card => {
+                    if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                        card.style.display = 'block';
+                        card.style.animation = 'none';
+                        card.offsetHeight; /* trigger reflow */
+                        card.style.animation = 'fadeIn 0.5s ease forwards';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
