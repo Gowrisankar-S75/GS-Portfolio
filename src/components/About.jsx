@@ -35,7 +35,7 @@ const education = [
     link: "https://www.bitsathy.ac.in/department/artificial-intelligence-and-data-science/",
     period: "Nov 2021 - May 2025",
     location: "Sathyamangalam, Tamil Nadu",
-    cgpa: "CGPA: 7.0/10",
+    cgpa: "CGPA: 7",
     desc: [
       "Built a strong foundation in Artificial Intelligence, Machine Learning, Data Structures, Algorithms, Database Management Systems, and Software Engineering.",
       "Worked on academic and personal projects involving web development, backend development, and problem-solving.",

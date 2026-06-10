@@ -349,7 +349,7 @@ export function CinematicProfileReveal({ onClose }) {
         className="absolute text-5xl md:text-8xl font-display font-bold text-white tracking-widest z-[102] text-center px-4"
         style={{ textShadow: '0 0 40px rgba(255, 87, 34, 0.8)' }}
       >
-        GOWRISANKAR DEV
+        GOWRISANKAR
       </h1>
 
       {/* Animated Profile Image */}
@@ -367,8 +367,8 @@ export function CinematicProfileReveal({ onClose }) {
         className="absolute bottom-10 md:bottom-16 z-[104] bg-slate-900/50 backdrop-blur-xl border border-[var(--accent-color)]/30 p-6 md:p-8 rounded-3xl max-w-lg w-[90%] flex flex-col items-center shadow-[0_0_50px_rgba(255,87,34,0.15)]"
         style={{ opacity: 0 }}
       >
-        <h2 className="text-3xl md:text-4xl font-display font-bold text-white tracking-wider mb-2">GOWRISANKAR DEV</h2>
-        <p className="text-[var(--accent-color)] font-semibold uppercase tracking-widest text-xs md:text-sm mb-6">Backend Developer</p>
+        <h2 className="text-3xl md:text-4xl font-display font-bold text-white tracking-wider mb-2">GOWRISANKAR</h2>
+        <p className="text-[var(--accent-color)] font-semibold uppercase tracking-widest text-xs md:text-sm mb-6">Software Engineer</p>
         
         <div className="w-full flex flex-col gap-4">
           <div className="flex items-center gap-4 text-slate-300">
