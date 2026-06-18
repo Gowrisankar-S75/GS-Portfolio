@@ -1,9 +1,11 @@
 import { useTheme } from '../hooks/useTheme';
 import { Sun, Moon, Menu, X } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import gsap from 'gsap';
 
 import profileImg from '../assets/17616.jpg';
+import animeImg from '../assets/profile_anime.png';
 
 import { CinematicProfileReveal } from './CinematicProfileReveal';
 
@@ -11,6 +13,91 @@ export function Navbar() {
   const { theme, toggleTheme } = useTheme();
   const [isOpen, setIsOpen] = useState(false);
   const [isPictureOpen, setIsPictureOpen] = useState(false);
+
+  const profileBtnRef = useRef(null);
+  const animeWrapperRef = useRef(null);
+  const animeImgRef = useRef(null);
+
+  useEffect(() => {
+    // Continuous subtle floating animation for the anime image
+    const floatAnim = gsap.to(animeImgRef.current, {
+      y: -3,
+      x: 2,
+      rotation: 1,
+      duration: 3,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut"
+    });
+
+    return () => {
+      floatAnim.kill();
+    };
+  }, []);
+
+  useEffect(() => {
+    const btn = profileBtnRef.current;
+    const wrapper = animeWrapperRef.current;
+    if (!btn || !wrapper) return;
+
+    const ctx = gsap.context(() => {});
+
+    const handleMouseEnter = (e) => {
+      const rect = btn.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      
+      ctx.add(() => {
+        gsap.to(wrapper, {
+          clipPath: `circle(45px at ${x}px ${y}px)`,
+          duration: 0.3,
+          ease: "power2.out",
+          overwrite: "auto"
+        });
+      });
+    };
+
+    const handleMouseMove = (e) => {
+      const rect = btn.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      ctx.add(() => {
+        gsap.to(wrapper, {
+          clipPath: `circle(45px at ${x}px ${y}px)`,
+          duration: 0.15,
+          ease: "power2.out",
+          overwrite: "auto"
+        });
+      });
+    };
+
+    const handleMouseLeave = (e) => {
+      const rect = btn.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      ctx.add(() => {
+        gsap.to(wrapper, {
+          clipPath: `circle(0px at ${x}px ${y}px)`,
+          duration: 0.3,
+          ease: "power2.inOut",
+          overwrite: "auto"
+        });
+      });
+    };
+
+    btn.addEventListener('mouseenter', handleMouseEnter);
+    btn.addEventListener('mousemove', handleMouseMove);
+    btn.addEventListener('mouseleave', handleMouseLeave);
+
+    return () => {
+      btn.removeEventListener('mouseenter', handleMouseEnter);
+      btn.removeEventListener('mousemove', handleMouseMove);
+      btn.removeEventListener('mouseleave', handleMouseLeave);
+      ctx.revert();
+    };
+  }, []);
 
   const navLinks = [
     { name: 'Home', href: '#home' },
@@ -27,11 +114,30 @@ export function Navbar() {
         <div className="flex items-center justify-between h-24">
           <div className="flex-shrink-0 flex items-center gap-3">
             <button 
+              ref={profileBtnRef}
               onClick={() => setIsPictureOpen(true)}
-              className="focus:outline-none hover:scale-105 transition-transform duration-300"
+              className="focus:outline-none hover:scale-105 transition-transform duration-300 relative rounded-full z-10 cursor-none"
+              data-cursor="profile"
               aria-label="View Profile Picture"
             >
-              <img src={profileImg} alt="Profile" className="w-10 h-10 md:w-12 md:h-12 rounded-full object-cover border-2 border-[var(--text-primary)]" />
+              <div className="relative w-10 h-10 md:w-12 md:h-12 rounded-full overflow-hidden border-2 border-[var(--text-primary)]">
+                {/* Original profile picture */}
+                <img src={profileImg} alt="Profile" className="w-full h-full object-cover" />
+                {/* Anime profile picture wrapper */}
+                <div 
+                  ref={animeWrapperRef}
+                  className="absolute inset-0 pointer-events-none rounded-full overflow-hidden"
+                  style={{ clipPath: 'circle(0px at 50% 50%)' }}
+                >
+                  {/* Anime profile picture */}
+                  <img 
+                    ref={animeImgRef}
+                    src={animeImg} 
+                    alt="Profile Anime" 
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
             </button>
             <a href="#home" className="text-2xl font-bold tracking-widest uppercase font-display text-[var(--text-primary)] hidden sm:block hover:text-[var(--accent-color)] transition-colors">
               Gowrisankar

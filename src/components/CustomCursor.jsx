@@ -1,34 +1,147 @@
-import { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import { useEffect, useRef } from 'react';
+import gsap from 'gsap';
 
 export function CustomCursor() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [isHovering, setIsHovering] = useState(false);
+  const dotRef = useRef(null);
+  const ringRef = useRef(null);
+  const textRef = useRef(null);
 
   useEffect(() => {
-    const updateMousePosition = (e) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
+    const dot = dotRef.current;
+    const ring = ringRef.current;
+    const text = textRef.current;
+    if (!dot || !ring) return;
+
+    // Set initial positions to center screen to avoid jumping from top-left (0,0)
+    gsap.set(dot, { xPercent: -50, yPercent: -50, x: window.innerWidth / 2, y: window.innerHeight / 2 });
+    gsap.set(ring, { xPercent: -50, yPercent: -50, x: window.innerWidth / 2, y: window.innerHeight / 2 });
+    gsap.set(text, { xPercent: -50, y: 10 });
+
+    // GSAP quickTo for ultra-smooth 60fps movement
+    const xToDot = gsap.quickTo(dot, "x", { duration: 0.08, ease: "power3.out" });
+    const yToDot = gsap.quickTo(dot, "y", { duration: 0.08, ease: "power3.out" });
+
+    const xToRing = gsap.quickTo(ring, "x", { duration: 0.25, ease: "power3.out" });
+    const yToRing = gsap.quickTo(ring, "y", { duration: 0.25, ease: "power3.out" });
+
+    const handleMouseMove = (e) => {
+      xToDot(e.clientX);
+      yToDot(e.clientY);
+      xToRing(e.clientX);
+      yToRing(e.clientY);
     };
 
+    let currentMode = 'normal';
+
     const handleMouseOver = (e) => {
-      if (
-        e.target.tagName.toLowerCase() === 'a' ||
-        e.target.tagName.toLowerCase() === 'button' ||
-        e.target.closest('a') ||
-        e.target.closest('button') ||
-        e.target.classList.contains('cursor-pointer')
-      ) {
-        setIsHovering(true);
-      } else {
-        setIsHovering(false);
+      const target = e.target;
+      if (!target) return;
+
+      // Check if hovering over profile trigger
+      const isProfile = target.closest('[data-cursor="profile"]');
+      if (isProfile) {
+        if (currentMode !== 'anime') {
+          currentMode = 'anime';
+          gsap.to(ring, {
+            opacity: 0,
+            duration: 0.2,
+            ease: 'power2.out',
+            overwrite: 'auto'
+          });
+          gsap.to(dot, {
+            opacity: 0,
+            duration: 0.2,
+            ease: 'power2.out',
+            overwrite: 'auto'
+          });
+          gsap.to(text, {
+            opacity: 0,
+            duration: 0.2,
+            ease: 'power2.out',
+            overwrite: 'auto'
+          });
+        }
+        return;
+      }
+
+      // Check if hovering over standard links/buttons
+      const isInteractive = target.closest('a, button, [role="button"]') || target.classList.contains('cursor-pointer');
+      if (isInteractive) {
+        if (currentMode !== 'hover') {
+          currentMode = 'hover';
+          gsap.to(ring, {
+            opacity: 1,
+            width: 60,
+            height: 60,
+            borderColor: 'white',
+            backgroundColor: 'white',
+            boxShadow: 'none',
+            mixBlendMode: 'difference',
+            duration: 0.3,
+            ease: 'power2.out',
+            overwrite: 'auto'
+          });
+          gsap.to(dot, {
+            opacity: 1,
+            width: 0,
+            height: 0,
+            backgroundColor: 'white',
+            mixBlendMode: 'difference',
+            duration: 0.3,
+            ease: 'power2.out',
+            overwrite: 'auto'
+          });
+          gsap.to(text, {
+            opacity: 0,
+            y: 10,
+            duration: 0.2,
+            ease: 'power2.in',
+            overwrite: 'auto'
+          });
+        }
+        return;
+      }
+
+      // Default normal mode
+      if (currentMode !== 'normal') {
+        currentMode = 'normal';
+        gsap.to(ring, {
+          opacity: 1,
+          width: 40,
+          height: 40,
+          borderColor: 'white',
+          backgroundColor: 'transparent',
+          boxShadow: 'none',
+          mixBlendMode: 'difference',
+          duration: 0.3,
+          ease: 'power2.out',
+          overwrite: 'auto'
+        });
+        gsap.to(dot, {
+          opacity: 1,
+          width: 12,
+          height: 12,
+          backgroundColor: 'white',
+          mixBlendMode: 'difference',
+          duration: 0.3,
+          ease: 'power2.out',
+          overwrite: 'auto'
+        });
+        gsap.to(text, {
+          opacity: 0,
+          y: 10,
+          duration: 0.2,
+          ease: 'power2.in',
+          overwrite: 'auto'
+        });
       }
     };
 
-    window.addEventListener('mousemove', updateMousePosition);
+    window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('mouseover', handleMouseOver);
 
     return () => {
-      window.removeEventListener('mousemove', updateMousePosition);
+      window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('mouseover', handleMouseOver);
     };
   }, []);
@@ -40,25 +153,40 @@ export function CustomCursor() {
 
   return (
     <>
-      <motion.div
-        className="fixed top-0 left-0 w-3 h-3 bg-white rounded-full pointer-events-none z-[9999] hidden md:block mix-blend-difference"
-        animate={{
-          x: mousePosition.x - 6,
-          y: mousePosition.y - 6,
-          scale: isHovering ? 0 : 1,
+      {/* Outer Ring */}
+      <div
+        ref={ringRef}
+        className="fixed top-0 left-0 rounded-full pointer-events-none z-[9998] hidden md:block border-2 border-white transition-colors duration-100"
+        style={{
+          width: '40px',
+          height: '40px',
+          mixBlendMode: 'difference',
+          willChange: 'transform, width, height, border-color, background-color, box-shadow'
         }}
-        transition={{ type: "tween", ease: "backOut", duration: 0.15 }}
-      />
-      
-      <motion.div
-        className="fixed top-0 left-0 w-10 h-10 border-2 border-white rounded-full pointer-events-none z-[9998] hidden md:block mix-blend-difference"
-        animate={{
-          x: mousePosition.x - 20,
-          y: mousePosition.y - 20,
-          scale: isHovering ? 1.5 : 1,
-          backgroundColor: isHovering ? "white" : "transparent",
+      >
+        {/* Subtitle text below the cursor */}
+        <div
+          ref={textRef}
+          className="absolute left-1/2 whitespace-nowrap pointer-events-none text-[10px] font-display font-bold tracking-widest text-[#ff7a47] uppercase opacity-0"
+          style={{
+            top: 'calc(100% + 16px)',
+            textShadow: '0 0 8px rgba(255, 87, 34, 0.8)'
+          }}
+        >
+          Anime Mode Activated ⚡
+        </div>
+      </div>
+
+      {/* Inner Dot */}
+      <div
+        ref={dotRef}
+        className="fixed top-0 left-0 rounded-full pointer-events-none z-[9999] hidden md:block bg-white"
+        style={{
+          width: '12px',
+          height: '12px',
+          mixBlendMode: 'difference',
+          willChange: 'transform, width, height, background-color'
         }}
-        transition={{ type: "tween", ease: "easeOut", duration: 0.3 }}
       />
     </>
   );

@@ -4,6 +4,7 @@ import gsap from 'gsap';
 import { Howl } from 'howler';
 import { X, Code2, Database, Globe } from 'lucide-react';
 import profileImg from '../assets/17616.jpg';
+import animeImg from '../assets/profile_anime.png';
 
 const GLASS_BREAK_URL = 'https://actions.google.com/sounds/v1/impacts/crash.ogg';
 
@@ -15,6 +16,10 @@ export function CinematicProfileReveal({ onClose }) {
   const cardRef = useRef(null);
   const glassSound = useRef(null);
   const animationFrame = useRef(null);
+
+  const profileContainerRef = useRef(null);
+  const animeWrapperRef = useRef(null);
+  const animeImgRef = useRef(null);
 
   // Canvas State Variables
   const canvasState = useRef({
@@ -165,13 +170,12 @@ export function CinematicProfileReveal({ onClose }) {
     
     // Animate the actual DOM image AND the canvas tracking state
     const isMobile = window.innerWidth < 768;
-    tl.fromTo(imageRef.current,
+    tl.fromTo(profileContainerRef.current,
       { y: '-80vh', rotation: -1440, scale: 0.2, opacity: 0 },
       { y: '0vh', rotation: 0, scale: 1, opacity: 1, duration: 0.8, ease: "power4.in",
         onUpdate: function() {
-          // Sync canvas tracking for trails
-          if (imageRef.current) {
-            const rect = imageRef.current.getBoundingClientRect();
+          if (profileContainerRef.current) {
+            const rect = profileContainerRef.current.getBoundingClientRect();
             canvasState.current.imageX = rect.left + rect.width / 2;
             canvasState.current.imageY = rect.top + rect.height / 2;
           }
@@ -303,7 +307,7 @@ export function CinematicProfileReveal({ onClose }) {
     });
 
     // 6. Stop rotation, portrait transform
-    tl.to(imageRef.current, {
+    tl.to(profileContainerRef.current, {
       scale: isMobile ? 1.2 : 1.5,
       y: isMobile ? '-15vh' : '-10vh',
       boxShadow: '0px 0px 50px rgba(255, 87, 34, 0.5)',
@@ -325,6 +329,87 @@ export function CinematicProfileReveal({ onClose }) {
       cancelAnimationFrame(animationFrame.current);
       window.removeEventListener('resize', updateSize);
       tl.kill();
+    };
+  }, []);
+
+  useEffect(() => {
+    // Continuous subtle floating animation for the anime image
+    const floatAnim = gsap.to(animeImgRef.current, {
+      y: -5,
+      x: 3,
+      rotation: 1,
+      duration: 3,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut"
+    });
+
+    return () => {
+      floatAnim.kill();
+    };
+  }, []);
+
+  useEffect(() => {
+    const btn = profileContainerRef.current;
+    const wrapper = animeWrapperRef.current;
+    if (!btn || !wrapper) return;
+
+    const ctx = gsap.context(() => {});
+
+    const handleMouseEnter = (e) => {
+      const rect = btn.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      
+      ctx.add(() => {
+        gsap.to(wrapper, {
+          clipPath: `circle(45px at ${x}px ${y}px)`,
+          duration: 0.3,
+          ease: "power2.out",
+          overwrite: "auto"
+        });
+      });
+    };
+
+    const handleMouseMove = (e) => {
+      const rect = btn.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      ctx.add(() => {
+        gsap.to(wrapper, {
+          clipPath: `circle(45px at ${x}px ${y}px)`,
+          duration: 0.15,
+          ease: "power2.out",
+          overwrite: "auto"
+        });
+      });
+    };
+
+    const handleMouseLeave = (e) => {
+      const rect = btn.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      ctx.add(() => {
+        gsap.to(wrapper, {
+          clipPath: `circle(0px at ${x}px ${y}px)`,
+          duration: 0.3,
+          ease: "power2.inOut",
+          overwrite: "auto"
+        });
+      });
+    };
+
+    btn.addEventListener('mouseenter', handleMouseEnter);
+    btn.addEventListener('mousemove', handleMouseMove);
+    btn.addEventListener('mouseleave', handleMouseLeave);
+
+    return () => {
+      btn.removeEventListener('mouseenter', handleMouseEnter);
+      btn.removeEventListener('mousemove', handleMouseMove);
+      btn.removeEventListener('mouseleave', handleMouseLeave);
+      ctx.revert();
     };
   }, []);
 
@@ -352,14 +437,37 @@ export function CinematicProfileReveal({ onClose }) {
         GOWRISANKAR
       </h1>
 
-      {/* Animated Profile Image */}
-      <img
-        ref={imageRef}
-        src={profileImg}
-        alt="Gowrisankar"
-        className="w-32 h-32 md:w-48 md:h-48 rounded-full object-cover border-4 border-[var(--accent-color)] z-[103]"
+      {/* Animated Profile Image Container */}
+      <div 
+        ref={profileContainerRef}
+        className="relative z-[103] cursor-none rounded-full"
+        data-cursor="profile"
         style={{ opacity: 0 }} // Hidden initially
-      />
+      >
+        <div className="relative w-32 h-32 md:w-48 md:h-48 rounded-full overflow-hidden border-4 border-[var(--accent-color)]">
+          {/* Original Profile Image */}
+          <img
+            ref={imageRef}
+            src={profileImg}
+            alt="Gowrisankar"
+            className="w-full h-full object-cover"
+          />
+          {/* Anime profile picture wrapper */}
+          <div 
+            ref={animeWrapperRef}
+            className="absolute inset-0 pointer-events-none rounded-full overflow-hidden"
+            style={{ clipPath: 'circle(0px at 50% 50%)' }}
+          >
+            {/* Anime profile picture */}
+            <img 
+              ref={animeImgRef}
+              src={animeImg} 
+              alt="Gowrisankar Anime" 
+              className="w-full h-full object-cover"
+            />
+          </div>
+        </div>
+      </div>
 
       {/* Hero Card */}
       <div 
