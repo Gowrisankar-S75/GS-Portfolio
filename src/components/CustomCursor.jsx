@@ -42,9 +42,16 @@ export function CustomCursor() {
       if (isProfile) {
         if (currentMode !== 'anime') {
           currentMode = 'anime';
+          text.innerText = 'Profile';
           gsap.to(ring, {
-            opacity: 0,
-            duration: 0.2,
+            opacity: 1,
+            width: 80,
+            height: 80,
+            borderColor: 'rgba(255,255,255,0.5)',
+            backgroundColor: 'rgba(0,0,0,0.2)',
+            mixBlendMode: 'normal',
+            backdropFilter: 'blur(4px)',
+            duration: 0.3,
             ease: 'power2.out',
             overwrite: 'auto'
           });
@@ -55,7 +62,8 @@ export function CustomCursor() {
             overwrite: 'auto'
           });
           gsap.to(text, {
-            opacity: 0,
+            opacity: 1,
+            y: 0,
             duration: 0.2,
             ease: 'power2.out',
             overwrite: 'auto'
@@ -77,6 +85,7 @@ export function CustomCursor() {
             backgroundColor: 'white',
             boxShadow: 'none',
             mixBlendMode: 'difference',
+            backdropFilter: 'none',
             duration: 0.3,
             ease: 'power2.out',
             overwrite: 'auto'
@@ -113,6 +122,7 @@ export function CustomCursor() {
           backgroundColor: 'transparent',
           boxShadow: 'none',
           mixBlendMode: 'difference',
+          backdropFilter: 'none',
           duration: 0.3,
           ease: 'power2.out',
           overwrite: 'auto'
