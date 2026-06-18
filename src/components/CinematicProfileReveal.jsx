@@ -440,8 +440,8 @@ export function CinematicProfileReveal({ onClose }) {
       {/* Animated Profile Image Container */}
       <div 
         ref={profileContainerRef}
-        className="relative z-[103] cursor-none rounded-full"
-        data-cursor="profile"
+        className="relative z-[103] rounded-full cursor-none"
+        data-cursor="hidden"
         style={{ opacity: 0 }} // Hidden initially
       >
         <div className="relative w-32 h-32 md:w-48 md:h-48 rounded-full overflow-hidden border-4 border-[var(--accent-color)]">

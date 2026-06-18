@@ -13,6 +13,12 @@ export function Navbar() {
   const { theme, toggleTheme } = useTheme();
   const [isOpen, setIsOpen] = useState(false);
   const [isPictureOpen, setIsPictureOpen] = useState(false);
+  const [hasRevealed, setHasRevealed] = useState(false);
+
+  const handleProfileClick = () => {
+    setIsPictureOpen(true);
+    setHasRevealed(true);
+  };
 
   const profileBtnRef = useRef(null);
   const animeWrapperRef = useRef(null);
@@ -115,9 +121,9 @@ export function Navbar() {
           <div className="flex-shrink-0 flex items-center gap-3">
             <button 
               ref={profileBtnRef}
-              onClick={() => setIsPictureOpen(true)}
+              onClick={handleProfileClick}
               className="focus:outline-none hover:scale-105 transition-transform duration-300 relative rounded-full z-10 cursor-none"
-              data-cursor="profile"
+              data-cursor={!hasRevealed ? "profile" : "hidden"}
               aria-label="View Profile Picture"
             >
               <div className="relative w-10 h-10 md:w-12 md:h-12 rounded-full overflow-hidden border-2 border-[var(--text-primary)]">
@@ -126,7 +132,7 @@ export function Navbar() {
                 {/* Anime profile picture wrapper */}
                 <div 
                   ref={animeWrapperRef}
-                  className="absolute inset-0 pointer-events-none rounded-full overflow-hidden"
+                  className={`absolute inset-0 pointer-events-none rounded-full overflow-hidden ${hasRevealed ? 'hidden' : ''}`}
                   style={{ clipPath: 'circle(0px at 50% 50%)' }}
                 >
                   {/* Anime profile picture */}

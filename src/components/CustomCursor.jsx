@@ -72,6 +72,33 @@ export function CustomCursor() {
         return;
       }
 
+      // Check if hovering over an element that should hide the cursor
+      const isHidden = target.closest('[data-cursor="hidden"]');
+      if (isHidden) {
+        if (currentMode !== 'hidden') {
+          currentMode = 'hidden';
+          gsap.to(ring, {
+            opacity: 0,
+            duration: 0.2,
+            ease: 'power2.out',
+            overwrite: 'auto'
+          });
+          gsap.to(dot, {
+            opacity: 0,
+            duration: 0.2,
+            ease: 'power2.out',
+            overwrite: 'auto'
+          });
+          gsap.to(text, {
+            opacity: 0,
+            duration: 0.2,
+            ease: 'power2.out',
+            overwrite: 'auto'
+          });
+        }
+        return;
+      }
+
       // Check if hovering over standard links/buttons
       const isInteractive = target.closest('a, button, [role="button"]') || target.classList.contains('cursor-pointer');
       if (isInteractive) {
