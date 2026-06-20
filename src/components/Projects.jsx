@@ -3,23 +3,28 @@ import { ExternalLink, Code, ArrowRight } from 'lucide-react';
 
 const projects = [
   {
-    title: "E-Commerce Platform",
-    description: "A full-stack e-commerce solution with payment integration, user authentication, and a modern admin dashboard.",
-    tech: ["React", "Node.js", "MongoDB", "Stripe"],
-    category: "Full Stack"
+    title: "Expense Tracker API",
+    description: "RESTful API with JWT auth, income/expense tracking, and role-based access control.",
+    tech: ["Node.js", "Express.js", "MongoDB", "JWT"],
+    category: "Backend API",
+    github: "https://github.com/Gowrisankar-S75/Expense-Tracker",
+    live: "https://expense-tracker-f7qp-git-master-gowrisankarsa75-7319s-projects.vercel.app/"
   },
   {
-    title: "Task Management App",
-    description: "A collaborative project management tool featuring real-time updates, kanban boards, and team roles.",
-    tech: ["Next.js", "TypeScript", "PostgreSQL", "Socket.io"],
-    category: "Web App"
-  },
-  {
-    title: "Fitness Tracker API",
-    description: "A robust REST API for tracking workouts and nutrition, featuring comprehensive test coverage and documentation.",
-    tech: ["Python", "FastAPI", "SQLAlchemy", "Docker"],
-    category: "Backend Services"
+    title: "Provably Fair RNG",
+    description: "Cryptographic RNG microservice enabling transparent, verifiable game outcomes with secure client/server seeds.",
+    tech: ["Node.js", "Express.js", "REST APIs", "JWT"],
+    category: "Microservice",
+    github: "https://github.com/Gowrisankar-S75/provably-fair-rng-service",
+    live: "https://provably-fair-rng-service-3.onrender.com/api-docs/"
   }
+  // ,
+  // {
+  //   title: "Fitness Tracker API",
+  //   description: "A robust REST API for tracking workouts and nutrition, featuring comprehensive test coverage and documentation.",
+  //   tech: ["Python", "FastAPI", "SQLAlchemy", "Docker"],
+  //   category: "Backend Services"
+  // }
 ];
 
 export function Projects() {
@@ -79,14 +84,18 @@ export function Projects() {
                     ))}
                   </div>
                 </div>
-                
+
                 <div className="flex gap-6 mt-4">
-                  <a href="#" className="flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-[var(--text-primary)] hover:text-[var(--accent-color)] transition-colors">
-                    <Code size={18} /> Code
-                  </a>
-                  <a href="#" className="flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-[var(--text-primary)] hover:text-[var(--accent-color)] transition-colors">
-                    <ExternalLink size={18} /> Live Demo
-                  </a>
+                  {project.github && (
+                    <a href={project.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-[var(--text-primary)] hover:text-[var(--accent-color)] transition-colors">
+                      <Code size={18} /> Code
+                    </a>
+                  )}
+                  {project.live && (
+                    <a href={project.live} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-[var(--text-primary)] hover:text-[var(--accent-color)] transition-colors">
+                      <ExternalLink size={18} /> Live Demo
+                    </a>
+                  )}
                 </div>
               </div>
 

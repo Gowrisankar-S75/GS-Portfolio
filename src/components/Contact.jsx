@@ -7,7 +7,7 @@ export function Contact() {
   return (
     <section id="contact" className="relative pt-32 pb-10 bg-[var(--dark-contrast)] text-[var(--dark-contrast-text)] overflow-hidden rounded-t-[3rem] mt-12 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
+
         {/* Massive Typography CTA */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -22,7 +22,7 @@ export function Contact() {
           <h2 className="text-[10vw] sm:text-[8rem] md:text-[10rem] font-display leading-none uppercase tracking-normal mb-8 hover:text-[var(--accent-color)] transition-colors duration-500 cursor-default">
             LET'S BUILD<br />SOMETHING.
           </h2>
-          
+
           <motion.a
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -44,7 +44,7 @@ export function Contact() {
               A software engineer dedicated to crafting premium, robust, and scalable digital experiences. Let's create the future together.
             </p>
           </div>
-          
+
           <div>
             <h4 className="text-sm font-bold uppercase tracking-widest text-white/40 mb-6">Socials</h4>
             <ul className="space-y-4">
@@ -69,7 +69,7 @@ export function Contact() {
                   <span className="p-1.5 border border-white/20 rounded-full group-hover:border-[var(--accent-color)] transition-colors">
                     <ArrowUpRight size={14} />
                   </span>
-                  9962431677
+                  +91 9962431677
                 </a>
               </li>
             </ul>
@@ -85,11 +85,8 @@ export function Contact() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-24 flex flex-col md:flex-row justify-between items-center text-sm font-bold tracking-widest uppercase text-white/40">
+        <div className="mt-24 flex justify-center items-center text-sm font-bold tracking-widest uppercase text-white/40 text-center">
           <p>&copy; {year} GOWRISANKAR. ALL RIGHTS RESERVED.</p>
-          <p className="mt-4 md:mt-0 flex items-center gap-2">
-            Built with <span className="text-[var(--accent-color)]">React</span> & Tailwind
-          </p>
         </div>
       </div>
     </section>

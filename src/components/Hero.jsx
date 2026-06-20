@@ -31,7 +31,7 @@ export function Hero() {
         className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full"
       >
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          
+
           {/* Left Column - Massive Typography */}
           <div className="lg:col-span-7 flex flex-col justify-center">
             <motion.div variants={itemVariants} className="mb-4">
@@ -39,7 +39,7 @@ export function Hero() {
                 Software Engineer
               </span>
             </motion.div>
-            
+
             <motion.h1
               variants={itemVariants}
               className="text-[12vw] sm:text-8xl md:text-9xl font-display leading-[0.85] tracking-normal uppercase text-[var(--text-primary)] mb-6"
@@ -74,11 +74,11 @@ export function Hero() {
                   <ArrowRight size={20} className="transform group-hover:translate-x-1 transition-transform duration-300" />
                 </span>
               </motion.a>
-              
+
               <motion.a
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                href="#"
+                href="/GOWRISANKAR_SDE.pdf"
                 className="flex items-center justify-center px-8 py-4 border-2 border-[var(--text-primary)] text-[var(--text-primary)] rounded-full sm:rounded-none font-bold tracking-widest uppercase hover:bg-[var(--text-primary)] hover:text-[var(--bg-color)] transition-colors duration-300"
               >
                 <Download size={20} className="mr-3" />
