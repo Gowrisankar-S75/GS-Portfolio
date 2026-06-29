@@ -165,7 +165,7 @@ export function Navbar() {
             </div>
             <button
               onClick={toggleTheme}
-              className="p-3 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors duration-300 text-[var(--text-primary)]"
+              className="p-3 rounded-xl hover:bg-black/5 dark:hover:bg-white/10 transition-colors duration-300 text-[var(--text-primary)]"
               aria-label="Toggle Theme"
             >
               {theme === 'light' ? <Moon size={20} /> : <Sun size={20} />}
@@ -176,7 +176,7 @@ export function Navbar() {
           <div className="md:hidden flex items-center gap-4">
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors duration-300 text-[var(--text-primary)]"
+              className="p-2 rounded-xl hover:bg-black/5 dark:hover:bg-white/10 transition-colors duration-300 text-[var(--text-primary)]"
             >
               {theme === 'light' ? <Moon size={20} /> : <Sun size={20} />}
             </button>

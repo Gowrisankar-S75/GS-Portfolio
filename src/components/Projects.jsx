@@ -57,13 +57,13 @@ export function Projects() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ type: "spring", stiffness: 40, damping: 20, delay: idx * 0.1 }}
-              className="group relative bg-[var(--bg-color)] border-2 border-black/5 dark:border-white/5 flex flex-col md:flex-row overflow-hidden hover:border-[var(--text-primary)] transition-colors duration-500"
+              className="group relative rounded-2xl bg-[var(--bg-color)] border-2 border-black/5 dark:border-white/5 flex flex-col md:flex-row overflow-hidden hover:border-[var(--text-primary)] transition-colors duration-500"
             >
               {/* Project Info Section */}
               <div className="p-8 md:p-12 md:w-1/2 flex flex-col justify-between z-10 bg-[var(--bg-color)]">
                 <div>
                   <div className="flex items-center gap-4 mb-6">
-                    <span className="px-3 py-1 bg-[var(--text-primary)] text-[var(--bg-color)] text-xs font-bold uppercase tracking-widest">
+                    <span className="px-3 py-1 bg-[var(--text-primary)] text-[var(--bg-color)] rounded-lg text-xs font-bold uppercase tracking-widest">
                       {project.category}
                     </span>
                     <span className="text-[var(--text-secondary)] text-sm font-bold tracking-widest">
@@ -78,7 +78,7 @@ export function Projects() {
                   </p>
                   <div className="flex flex-wrap gap-2 mb-8">
                     {project.tech.map(t => (
-                      <span key={t} className="px-3 py-1 border border-black/10 dark:border-white/10 text-[var(--text-secondary)] text-sm font-bold tracking-wider uppercase">
+                      <span key={t} className="px-3 py-1 border border-black/10 dark:border-white/10 rounded-lg text-[var(--text-secondary)] text-sm font-bold tracking-wider uppercase">
                         {t}
                       </span>
                     ))}

@@ -51,7 +51,7 @@ export function Hero() {
           </div>
 
           {/* Right Column - Details and CTAs */}
-          <div className="lg:col-span-5 flex flex-col justify-center lg:pl-10 lg:border-l-2 lg:border-[var(--text-primary)]/10">
+          <div className="lg:col-span-5 flex flex-col justify-center lg:pl-10">
             <motion.p
               variants={itemVariants}
               className="text-xl md:text-2xl text-[var(--text-secondary)] mb-10 leading-relaxed font-light"
@@ -67,7 +67,7 @@ export function Hero() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 href="#projects"
-                className="group flex items-center justify-between px-8 py-4 bg-[var(--text-primary)] text-[var(--bg-color)] rounded-full sm:rounded-none font-bold tracking-widest uppercase hover:bg-[var(--accent-color)] transition-colors duration-300"
+                className="group flex items-center justify-between px-8 py-4 bg-[var(--text-primary)] text-[var(--bg-color)] rounded-full font-bold tracking-widest uppercase hover:bg-[var(--accent-color)] transition-colors duration-300"
               >
                 <span>View Work</span>
                 <span className="ml-4 p-1.5 border border-current rounded-full group-hover:bg-white group-hover:text-[var(--accent-color)] transition-colors duration-300">
@@ -79,7 +79,7 @@ export function Hero() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 href="/GOWRISANKAR_SDE.pdf"
-                className="flex items-center justify-center px-8 py-4 border-2 border-[var(--text-primary)] text-[var(--text-primary)] rounded-full sm:rounded-none font-bold tracking-widest uppercase hover:bg-[var(--text-primary)] hover:text-[var(--bg-color)] transition-colors duration-300"
+                className="flex items-center justify-center px-8 py-4 border-2 border-[var(--text-primary)] text-[var(--text-primary)] rounded-full font-bold tracking-widest uppercase hover:bg-[var(--text-primary)] hover:text-[var(--bg-color)] transition-colors duration-300"
               >
                 <Download size={20} className="mr-3" />
                 Resume

@@ -82,7 +82,7 @@ export function About() {
             transition={{ type: "spring", stiffness: 40, damping: 20 }}
           >
             <div className="flex items-center gap-4 mb-10">
-              <div className="p-3 bg-[var(--dark-contrast)] text-[var(--dark-contrast-text)] rounded-none">
+              <div className="p-3 bg-[var(--dark-contrast)] text-[var(--dark-contrast-text)] rounded-xl">
                 <Briefcase size={28} />
               </div>
               <h3 className="text-3xl font-display uppercase tracking-widest text-[var(--text-primary)]">
@@ -133,7 +133,7 @@ export function About() {
             transition={{ type: "spring", stiffness: 40, damping: 20, delay: 0.2 }}
           >
             <div className="flex items-center gap-4 mb-10">
-              <div className="p-3 bg-[var(--dark-contrast)] text-[var(--dark-contrast-text)] rounded-none">
+              <div className="p-3 bg-[var(--dark-contrast)] text-[var(--dark-contrast-text)] rounded-xl">
                 <GraduationCap size={28} />
               </div>
               <h3 className="text-3xl font-display uppercase tracking-widest text-[var(--text-primary)]">

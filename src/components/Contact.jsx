@@ -50,7 +50,7 @@ export function Contact() {
             <ul className="space-y-4">
               <li>
                 <a href="https://github.com/Gowrisankar-S75" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-3 text-white/80 hover:text-[var(--accent-color)] transition-colors font-medium">
-                  <span className="p-1.5 border border-white/20 rounded-full group-hover:border-[var(--accent-color)] transition-colors">
+                  <span className="p-1.5 border border-white/20 rounded-xl group-hover:border-[var(--accent-color)] transition-colors">
                     <ArrowUpRight size={14} />
                   </span>
                   GitHub
@@ -58,7 +58,7 @@ export function Contact() {
               </li>
               <li>
                 <a href="https://www.linkedin.com/in/gowrisankar-s-378bb8266" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-3 text-white/80 hover:text-[var(--accent-color)] transition-colors font-medium">
-                  <span className="p-1.5 border border-white/20 rounded-full group-hover:border-[var(--accent-color)] transition-colors">
+                  <span className="p-1.5 border border-white/20 rounded-xl group-hover:border-[var(--accent-color)] transition-colors">
                     <ArrowUpRight size={14} />
                   </span>
                   LinkedIn
@@ -66,7 +66,7 @@ export function Contact() {
               </li>
               <li>
                 <a href="tel:+919962431677" className="group flex items-center gap-3 text-white/80 hover:text-[var(--accent-color)] transition-colors font-medium">
-                  <span className="p-1.5 border border-white/20 rounded-full group-hover:border-[var(--accent-color)] transition-colors">
+                  <span className="p-1.5 border border-white/20 rounded-xl group-hover:border-[var(--accent-color)] transition-colors">
                     <ArrowUpRight size={14} />
                   </span>
                   +91 9962431677
